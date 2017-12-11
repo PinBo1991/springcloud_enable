@@ -1,0 +1,17 @@
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+server:
+  port: 8769
+spring:
+  application:
+    name: zuul-reverseproxy-filter
+zuul:
+  routes:
+    api-a:
+      path: /zuul-a/**
+      serviceId: ribbon-loadbalance
+    api-b:
+      path: /zuul-b/**
+      serviceId: feign-loadbalance
